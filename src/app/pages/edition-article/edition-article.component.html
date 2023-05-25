@@ -1,0 +1,33 @@
+<h1>{{titre | enMajuscule: "Page : "}}</h1>
+<h2>{{aujourdhui | date : "dd/MM/yyyy"}}</h2>
+
+<form [formGroup]="formulaire"
+  (ngSubmit)="onAjoutArticle()"
+  style="max-width: 600px"
+  class="container d-flex flex-column mt-5"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Nom article</mat-label>
+    <input matInput formControlName="nom"/>
+    <mat-error *ngIf="formulaire.get('nom')?.hasError('required')">
+      Le champs est obligatoire
+    </mat-error>
+    <mat-error *ngIf="formulaire.get('nom')?.hasError('maxlength')">
+      Le nom est trop long
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description article</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+    <mat-error *ngIf="formulaire.get('description')?.hasError('required')">
+      Le champs est obligatoire
+    </mat-error>
+    <mat-error *ngIf="formulaire.get('description')?.hasError('minlength')">
+      La description est trop courte/mat-error></mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    {{idArticle == null ? "Ajouter l'article" : "Modifier l'article"}}
+  </button>
+</form>>

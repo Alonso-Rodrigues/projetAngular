@@ -1,0 +1,63 @@
+<!-- *******************|TEST|********************** -->
+<!-- <p>accueil works!</p> -->
+
+<!-- compteur: <h1 style="color: green;">{{compteur}}</h1>
+
+<h1 (click)="increment()">Click ICI</h1>
+
+<button mat-raised-button color="primary">Click Ici Aussi</button> -->
+
+<!-- ************************************************ -->
+<!-- *ngFor c'est la même chose que href  -->
+<!-- ngIf prendre une boolen -->
+<!-- ng-container c'est ma même chose qu'un div, il reste neutre-->
+<!-- <ul>
+    <ng-container *ngFor="let personne of listePersonne">
+        <li *ngIf="personne.age >=18; else templateMineur">
+            {{personne.prenom}} {{personne.nom}}
+        </li>
+
+        <ng-template #templateMineur>
+            <li>Mineur</li>
+        </ng-template>
+    </ng-container>
+</ul> -->
+
+<!-- <ul>
+    <li *ngFor="let article of listeArticle">
+        {{article.title}}
+    </li>
+</ul> -->
+<!------------------------------------>
+<div class="container">
+<a *ngIf="auth.utilisateur != null" mat-raised-button color="primary" routerLink="/ajouter-article">Ajouter un article</a>
+</div>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let article of listeArticle" class="col-6">
+            <mat-card class="mt-3">
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title>{{article.nom}}</mat-card-title>
+                  <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="https://picsum.photos/id/{{article.id}}/300/200" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                  <p>
+                    {{article.description}}
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button *ngIf="auth.utilisateur?.admin==1" [routerLink]="['/modifier-article', article.id]" mat-raised-button color="primary">Modifier
+                    <mat-icon fontIcon="edit"></mat-icon>
+                </button>
+                  <button *ngIf="auth.utilisateur?.admin==1" (click)="onSuppressionArticle(article.id)" mat-raised-button color="warn" class="ms-2">Supprimer
+                    <mat-icon fontIcon="delete"></mat-icon>
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+    </div>
+</div>
+
+  

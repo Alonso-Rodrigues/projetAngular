@@ -1,0 +1,57 @@
+<!-- routerlink c'est la même chose que 'href' -->
+<!-- <a routerLink="/Accueil" routerLinkActive="actif">Accueil</a>
+<a routerLink="/Connexion" routerLinkActive="actif">Connexion</a> -->
+
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark"
+  aria-label="Fifth navbar example"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/accueil">MON SITE</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample05"
+      aria-controls="navbarsExample05"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample05">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" routerLinkActive="actif" routerLink="/accueil">
+            Accueil
+          </a>
+        </li>
+        <li *ngIf="auth.utilisateur == null, else deconnexion" class="nav-item">
+          <a class="nav-link" routerLink="/connexion" routerLinkActive="actif">
+            Connexion
+          </a>
+        </li>
+        <ng-template #deconnexion>
+          <li class="nav-item">
+            <a class="nav-link btn" (click)="onDeconnexion()">
+              Déconnexion
+            </a>
+          </li>
+        </ng-template>
+      </ul>
+      <form role="search">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Router: affiche les composents -->
+<router-outlet></router-outlet>

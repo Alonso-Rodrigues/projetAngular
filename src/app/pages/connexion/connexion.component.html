@@ -1,0 +1,29 @@
+
+<form [formGroup]="formulaire"
+  (ngSubmit)="onConnexion()"
+  style="max-width: 600px"
+  class="container d-flex flex-column mt-5"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email"/>
+    <mat-error *ngIf="formulaire.get('email')?.hasError('required')">
+      L'email est malformé
+    </mat-error>
+    <mat-error *ngIf="formulaire.get('nom')?.hasError('maxlength')">
+      L'email est obligatoire'
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput type="password" formControlName="password"/>
+    <mat-error>
+      Le mot de passe est obligatoire
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    Connexion
+  </button>
+</form>>
